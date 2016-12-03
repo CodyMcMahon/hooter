@@ -5,13 +5,19 @@
                 <p> stats </p>
             </div>
          </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p> memes </p>
+            </div>
+         </div>
     </div>
     <div class = "col-xs-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <p> feed </p>
+                <p> <%= render '/components/hoot_form' %></p>
             </div>
          </div>
+        <%= render '/components/time_line' %>
     </div>
     <div class = "col-xs-3">
         <div class="panel panel-default">
@@ -22,12 +28,3 @@
     </div>
 </div>
 <!--meme comment xdddddddddddddd -->
-<div class = "row" >
-    <div class = "col-xs-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <p> memes </p>
-            </div>
-         </div>
-    </div>
-</div>

@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  resources :posts
   root 'pages#index'
 
   get '/home' => 'pages#home'
 
-  get '/profile' => 'pages#profile'
-
   get '/explore' => 'pages#explore'
+  
+  get '/hoots' => 'pages#hoots'
+  
+  get '/:id' => 'pages#profile'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
