@@ -1,0 +1,9 @@
+<% @memes = Post.limit(4).order('RANDOM()') %>
+<div class="panel-body">
+    <p> some memes </p>
+</div>
+<% for @m in @memes %>
+    <div>
+        <p><%= @m.content %> </p>
+    </div>
+<% end %>

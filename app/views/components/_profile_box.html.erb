@@ -1,0 +1,13 @@
+<p> <%= @username %> </p>
+<div class = "col-xs-4">
+    <p>hoots</p>
+    <p> <%= @this_user.posts.count %></p>
+</div>
+<div class = "col-xs-4">
+    <p>following</p>
+    <p> <%= @this_user.following.count %> </p>
+</div>
+<div class = "col-xs-4">
+    <p>followers</p>
+    <p><%= @this_user.followers.count %> </p>
+</div>

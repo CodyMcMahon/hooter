@@ -1,0 +1,9 @@
+<% @peeps = User.limit(7).order('RANDOM()') %>
+<div class="panel-body">
+    <p> fellow hooters </p>
+</div>
+<% for @p in @peeps %>
+    <div>
+        <a href = /<%= @p.username %> > <%= @p.username %> </a>
+    </div>
+<% end %>
