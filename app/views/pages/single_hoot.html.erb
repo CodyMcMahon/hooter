@@ -1,0 +1,8 @@
+<% if @hoot %>
+    <% @p = @hoot %>
+    <div class = "col-xs-6 col-xs-offset-3">
+        <%= render '/components/hoot' %>
+    </div>
+<% else %>
+    <p> no hoot found </p>
+<% end %>

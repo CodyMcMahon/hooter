@@ -1,22 +1,30 @@
-<div class = "row" >
-    <div class = "col-xs-6 col-xs-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <p> hoots around the world </p>
+<% if !(User.find_by_username(@username)) %>
+    <%= render '/components/no_user_found' %>
+<% else %>
+
+        <div class = "row" >
+            <div class = "col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p> <%=@username%> is following </p>
+                    </div>
+                 </div>
+                <div class="panel panel-default">
+                    <%= render '/components/list_of_owls' %>
+                </div>
             </div>
-         </div>
-        <%= render '/components/time_line' %>
-    </div>
-    <div class = "col-xs-3">
-        <div class="panel panel-default">
-             <div class="panel-body">
-                <%= render '/components/meme_box' %>
-            </div>
-       </div>
-       <div class="panel panel-default">
-            <div class="panel-body">
-               <%= render '/components/peeps_box' %>
+            <div class = "col-xs-3">
+                <div class="panel panel-default">
+                     <div class="panel-body">
+                        <%= render '/components/meme_box' %>
+                    </div>
+               </div>
+               <div class="panel panel-default">
+                    <div class="panel-body">
+                       <%= render '/components/peeps_box' %>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        
+<% end %>

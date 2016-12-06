@@ -2,7 +2,7 @@
 
   <div class="field" style="margin-left: 20px">
       <p class = 'hoot-title'> got something to hoot? </p>
-      <%= f.text_field :content, autofocus: true, class: "form-control" %>
+      <%= f.text_field :content, autofocus: true,autocomplete: "off", class: "form-control" %>
       <span style="float: right"><%= f.submit "HOOT DIS OUT", class: "btn btn-primary" %></span>
   </div>
 <% end %>

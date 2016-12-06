@@ -1,0 +1,10 @@
+<% if @owls.any? %>
+    <% for @p in @owls %>
+        <div>
+            <a href = /<%= @p.username %> ><p class = 'list-owl' p> <%= @p.username %> </p></a>
+        </div>
+    <%end%>
+<% else%>
+    <p class = 'list-owl'>  no one..... </p>
+
+<% end %>

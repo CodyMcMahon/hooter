@@ -1,19 +1,5 @@
 <% for @p in @posts %>
-    <div class="panel panel-default post-panel">
-        <div class="panel-body">
-            <p><a href='/<%= User.find(@p.user_id).username %>' class = "post-username"> <%= User.find(@p.user_id).username %> </a><span class = 'post-time'><%= @p.created_at.to_formatted_s(:short) %></span></p>
-            
-            <p></p>
-            <p class = "post-words"> <%= @p.content %> </p>
-            <p></p>
-            <p class = "post-buttons"> 
-                <span class = "glyphicon glyphicon-pencil post-link" aria-hidden="true"></span>
-                <span class = "glyphicon glyphicon-star post-link"   aria-hidden="true"></span>
-                <span class = "glyphicon glyphicon-trash post-link"  aria-hidden="true"></span>
-            
-            </p>
-        </div>
-     </div>
+    <%= render '/components/hoot' %>
 <% end %>
 <div class="panel panel-default post-panel">
     <div class="panel-body">

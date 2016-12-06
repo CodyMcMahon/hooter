@@ -1,13 +1,13 @@
-<p> <%= @username %> </p>
+<h3> <%= @username %> </h3>
 <div class = "col-xs-4">
     <p>hoots</p>
     <p> <%= @this_user.posts.count %></p>
 </div>
 <div class = "col-xs-4">
-    <p>following</p>
+    <a href = '/following/<%= @username %>'><p>following</p></a>
     <p> <%= @this_user.following.count %> </p>
 </div>
 <div class = "col-xs-4">
-    <p>followers</p>
+    <a href = '/followers/<%= @username %>'><p>followers</p></a>
     <p><%= @this_user.followers.count %> </p>
 </div>

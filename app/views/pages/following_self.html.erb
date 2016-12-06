@@ -1,20 +1,14 @@
-<% if !(User.find_by_username(@username)) %>
-
-
-    <%= render '/components/no_user_found' %>
-
+<% if !user_signed_in? %>
+    <%= render '/components/not_signed_in' %>
 <% else %>
-
     <div class = "row" >
         <div class = "col-xs-6 col-xs-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p> followers of  <%=@username%></p>
+                    <p> hoots around the world </p>
                 </div>
              </div>
-            <div class="panel panel-default">
-                <%= render '/components/list_of_owls' %>
-            </div>
+            <%= render '/components/list_of_owls' %>
         </div>
         <div class = "col-xs-3">
             <div class="panel panel-default">
@@ -29,5 +23,4 @@
             </div>
         </div>
     </div>
-
 <% end %>

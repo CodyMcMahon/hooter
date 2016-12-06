@@ -1,0 +1,15 @@
+
+<div class="panel panel-default post-panel">
+    <div class="panel-body">
+        <p><a href='/<%= User.find(@p.user_id).username %>' class = "post-username"> <%= User.find(@p.user_id).username %> </a><a href = '/single_hoot/<%= @p.id %>'><span class = 'post-time'><%= @p.created_at.to_formatted_s(:short) %></span></a></p>
+        
+        <p></p>
+        <p class = "post-words"> <%= @p.content %> </p>
+        <p></p>
+        <p class = "post-buttons"> 
+            <a href = '/one_hoot/'><span class = "glyphicon glyphicon-pencil post-link" aria-hidden="true">reply</span></a>
+            <%= render '/components/like_button' %>
+            <%= render '/components/hate_button' %>
+        </p>
+    </div>
+</div>

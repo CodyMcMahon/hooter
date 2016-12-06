@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+    <%= form_for(@new_hate) do |f| %>
+        <div><%= hidden_field_tag :from_id, current_user.id %></div>
+        <div><%= hidden_field_tag :to_id, @p.user_id %></div>
+        <div><%= hidden_field_tag :post_id, @p.id %></div>
+    <%= submit_tag("hate", class: "btn btn-danger") %> <%= @p.hates.count %>
+<% end %>
+<% else %>
+    <span class = "glyphicon glyphicon-trash post-link"  aria-hidden="true"></span><span><%= @p.hates.count %></span>
+<% end %>

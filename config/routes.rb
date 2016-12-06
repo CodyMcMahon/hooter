@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :relationships
   resources :posts
+  resources :likes
+  resources :hates
   root 'pages#index'
 
   get '/home' => 'pages#home'
@@ -27,6 +29,12 @@ Rails.application.routes.draw do
   get '/followers' => 'pages#followers_self'
   
   get '/followers/:id' => 'pages#followers'
+  
+  get '/kill_my_account' => 'pages#kill_my_account'
+  
+  get '/single_hoot' => 'pages#no_hoot'
+  
+  get '/single_hoot/:id' => 'pages#single_hoot'
   
   get '/:id' => 'pages#profile'
 
