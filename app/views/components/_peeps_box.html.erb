@@ -5,7 +5,7 @@
 <% for @p in @peeps %>
     <% if @p.username %>
         <div>
-            <a href = /<%= @p.username.gsub(" ","%20") %> > <%= @p.username %> </a>
+            <a href = /<%= @p.username.gsub(" ","%20") if @p%> > <%= @p.username  if @p%> </a>
         </div>
     <% end %>
 <% end %>
