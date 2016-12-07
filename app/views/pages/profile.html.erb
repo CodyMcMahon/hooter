@@ -18,12 +18,14 @@
                     <%= render '/components/profile_box' %>
                 </div>
             </div>
-            <% if @this_user.id != current_user.id %>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <%= render '/components/follow_button' %>
+            <% if user_signed_in? %>
+                <% if @this_user.id != current_user.id %>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <%= render '/components/follow_button' %>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
         </div>
         <div class = "col-xs-6">
