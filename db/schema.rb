@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161206193604) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
