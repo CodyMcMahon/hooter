@@ -5,7 +5,7 @@
 <div>
     <% 10.times do %>
         <% offset = rand(Post.count) %>
-        <% @m = Post.offset(offset).first  if @m%>
+        <% @m = Post.offset(offset).first%>
         <p><%= @m.content  if @m%> </p>
     <% end %>
 </div>
