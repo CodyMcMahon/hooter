@@ -1,10 +1,5 @@
 <% if user_signed_in? %>
-    <%= form_for(@new_like) do |f| %>
-        <div><%= hidden_field_tag :from_id, current_user.id %></div>
-        <div><%= hidden_field_tag :to_id, @p.user_id %></div>
-        <div><%= hidden_field_tag :post_id, @p.id %></div>
-    <%= submit_tag("like ", class: "btn btn-info")  %>  <%= @p.likes.count %>
-<% end %>
+    <a href="/add_like_to/<%=@p.user_id%>/<%=@p.id%>"/ ><span class = "glyphicon glyphicon-star post-link"   aria-hidden="true"></span></a><span><%= @p.likes.count %></span>
 <% else %>
     <span class = "glyphicon glyphicon-star post-link"   aria-hidden="true"></span><span><%= @p.likes.count %></span>
 <% end %>

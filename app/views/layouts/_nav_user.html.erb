@@ -22,13 +22,13 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user_name %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/<%= current_user.username %>">Profile</a></li>
+            <li><a href="/<%= current_user_name %>">Profile</a></li>
             <li><a href="/help">Help</a></li>
-            <li><%= link_to('Edit Profile', edit_user_registration_path) %></li>
+            <li><%= link_to('Edit Profile', '/edit_profile') %></li>
             <li role="separator" class="divider"></li>
-            <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+            <li><%= link_to('Log Out', logout_path, method: :post) %></li>
           </ul>
         </li>
         <a href = '/one_hoot' ><li type = "button" class="btn btn-primary navbar-btn">Hoot</li></a>

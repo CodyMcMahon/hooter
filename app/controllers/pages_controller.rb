@@ -1,9 +1,18 @@
 class PagesController < ApplicationController
   def index
+    
   end
   
   def kill_my_account
     
+  end
+  
+  def login
+    
+  end
+  
+  def signup
+    @user = User.new
   end
   
   def help
@@ -27,8 +36,9 @@ class PagesController < ApplicationController
   
   def following
     @username = params[:id]
-    if (User.find_by_username(params[:id]))
-      @owls = User.find_by_username(params[:id]).following
+    test = User.find_by_name(params[:id])
+    if test
+      @owls = test.following
     end
   end
   
@@ -40,8 +50,9 @@ class PagesController < ApplicationController
   
   def followers
     @username = params[:id]
-    if (User.find_by_username(params[:id]))
-      @owls = User.find_by_username(params[:id]).followers
+    test = User.find_by_name(params[:id])
+    if test
+      @owls = test.followers
     end
   end
   
@@ -59,14 +70,14 @@ class PagesController < ApplicationController
     @new_like = Like.new
     @new_hate = Hate.new
     if user_signed_in?
-      @this_user = User.find_by_username(current_user.username)
-      @username = current_user.username
+      @this_user = current_user
+      @username = session[:user_name]
       @newPost = Post.new
       arr = Array.new
-      for @a in current_user.following
+      for @a in @this_user.following
         arr.push(@a.id)
       end
-      arr.push(current_user.id)
+      arr.push(session[:user_id])
       @posts = Post.where("user_id IN (?)", arr)
     end
   end
@@ -74,10 +85,10 @@ class PagesController < ApplicationController
   def profile
     @new_like = Like.new
     @new_hate = Hate.new
-    if (User.find_by_username(params[:id]))
-      @this_user = User.find_by_username(params[:id])
+    if (User.find_by_name(params[:id]))
+      @this_user = User.find_by_name(params[:id])
       @username = params[:id]
-      @posts = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+      @posts = Post.all.where("user_id = ?", User.find_by_name(params[:id]).id)
     else
       @username = params[:id]
       @posts = Post.all

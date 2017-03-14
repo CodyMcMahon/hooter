@@ -3,9 +3,9 @@
     <p> fellow hooters </p>
 </div>
 <% for @p in @peeps %>
-    <% if @p.username %>
+    <% if @p.name %>
         <div>
-            <a href = /<%= @p.username.gsub(" ","%20") if @p%> > <%= @p.username  if @p%> </a>
+            <img src=<%=@p.profile_image%>  height="14" width="14" ><a href = /<%= @p.name.gsub(" ","%20") if @p%> > <%= @p.name  if @p%> </a>
         </div>
     <% end %>
 <% end %>

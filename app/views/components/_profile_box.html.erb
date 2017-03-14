@@ -1,4 +1,13 @@
-<h3> <%= @username %> </h3>
+<div>
+    <div class = "col-xs-12">  
+        <img src="<%=@this_user.profile_image%>" height="190" width="190" />
+    </div>
+</div>
+<div>
+    <div class = "col-xs-12">  <h3> 
+        <%= @username %> </h3>
+    </div>
+</div>
 <div class = "col-xs-4">
     <p>hoots</p>
     <p> <%= @this_user.posts.count %></p>

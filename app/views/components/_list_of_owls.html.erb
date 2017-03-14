@@ -1,7 +1,7 @@
 <% if @owls.any? %>
     <% for @p in @owls %>
         <div>
-            <a href = /<%= @p.username %> ><p class = 'list-owl' p> <%= @p.username %> </p></a>
+            <img src=<%=@p.profile_image%>  height="5" width="5" ><a href = /<%= @p.name %> ><p class = 'list-owl' p> <%= @p.name %> </p></a>
         </div>
     <%end%>
 <% else%>

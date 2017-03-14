@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         
+         has_secure_password
          
          has_many :posts, dependent: :destroy
          has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -23,5 +21,14 @@ class User < ActiveRecord::Base
           
           def following?(other)
             following.include?(other)
+          end
+          
+          def admin?
+            self.admin
+          end
+          # Returns the hash digest of the given string.
+          def User.digest(string)
+              cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+              BCrypt::Password.create(string, cost: cost)
           end
 end

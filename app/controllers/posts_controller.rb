@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     
     def create
         @post = Post.new(post_params)
-        @post.user_id = current_user.id
+        @post.user_id = session[:user_id]
         respond_to do |f|
             if(@post.save)
                 f.html { redirect_to "", notice: ""}

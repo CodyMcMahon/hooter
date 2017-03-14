@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
   resources :users do
     member do
       get :following, :followers
@@ -12,6 +11,26 @@ Rails.application.routes.draw do
   resources :hates
   root 'pages#index'
 
+  post 'login' => 'session#create'
+
+  post 'logout' => 'session#destroy'
+  
+  post 'change_password' => 'users#change_password'
+  
+  post 'change_avatar' => 'users#change_avatar'
+  
+  post 'like' => 'likes#create'
+
+  get '/add_like_to/:to_id/:post_id' => 'likes#create'
+  
+  get '/add_hate_to/:to_id/:post_id' => 'hates#create'
+
+  get '/edit_profile' => 'pages#edit_profile'
+
+  get '/login' => 'pages#login'
+  
+  get '/signup' => 'pages#signup'
+  
   get '/home' => 'pages#home'
   
   get '/help' => 'pages#help'

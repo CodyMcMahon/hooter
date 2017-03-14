@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'digest/sha1'
+User.create(name: 'admin', password: '12345', password_confirmation: '12345', admin: true)

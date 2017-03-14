@@ -1,0 +1,31 @@
+<div class = "col-xs-6 col-xs-offset-3">
+  <h2>Sign up and start hooting friend :)</h2>
+  
+  <%= form_for(@user) do |f| %>
+  
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true , class: 'form-control'%>
+    </div>
+      <div class="field">
+          <%= f.label 'Profile_Image_(optional)' %><br />
+          <%= f.text_field :profile_image, :value => '', class: 'form-control'%>
+        </div>
+  
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, :placeholder => "password", autocomplete: "off" , class: 'form-control'%>
+    </div>
+  
+    <div class="field">
+      <%= f.label "Password Confirmation" %><br />
+      <%= f.password_field :password_confirmation, :placeholder => "confirm password", autocomplete: "off" , class: 'form-control'%>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit "Sign up" , class: 'btn btn-default'%>
+    </div>
+  <% end %>
+  
+  <a href = '/sign_in'>already have an account?</a>
+</div>

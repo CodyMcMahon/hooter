@@ -1,0 +1,11 @@
+<%= form_for(:user, url: change_password_path) do |f| %>
+    <%= f.password_field :password, :placeholder => "current passord" %>
+    <%= f.password_field :new_password, :placeholder => "new password" %>
+    <%= f.password_field :new_password_confirm, :placeholder => "new password confirm" %>
+    <%= f.submit "Change Password", class: "btn-submit" %>
+<% end %>
+<%= form_for(:user, url: change_avatar_path) do |f| %>
+    <%= f.password_field :password, :placeholder => "current passord" %>
+    <%= f.text_field :avatar, :placeholder => "new avatar url" %>
+    <%= f.submit "Change Avatar", class: "btn-submit" %>
+<% end %>

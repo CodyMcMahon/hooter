@@ -1,0 +1,21 @@
+<div class = "col-xs-6 col-xs-offset-3">
+<h2>Log in and start hooting</h2>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :placeholder => "name", autofocus: true , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :placeholder => "password", autocomplete: "off" , class: 'form-control'%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" , class: 'btn btn-default'%>
+  </div>
+<% end %>
+<a href='/users/sign_up'><p>new hooter?</p></a>
+<!--<a href='/users/password/new'><p>bad memory?(forgotten password)</p></a>-->
+</div>
