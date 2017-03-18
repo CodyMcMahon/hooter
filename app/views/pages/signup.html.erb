@@ -4,16 +4,16 @@
   <%= form_for(@user) do |f| %>
   
     <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true , class: 'form-control'%>
+      <%= f.label "name (max size 20) (numbers letters underscores and spaces are allowed)" %><br />
+      <%= f.text_field :name, :placeholder => "you are name here", autofocus: true , class: 'form-control'%>
     </div>
       <div class="field">
           <%= f.label 'Profile_Image_(optional)' %><br />
-          <%= f.text_field :profile_image, :value => '', class: 'form-control'%>
+          <%= f.text_field :profile_image, :placeholder => "image url (optional)", :value => '', class: 'form-control'%>
         </div>
   
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label "password (min size 2)" %>
       <%= f.password_field :password, :placeholder => "password", autocomplete: "off" , class: 'form-control'%>
     </div>
   
@@ -27,5 +27,5 @@
     </div>
   <% end %>
   
-  <a href = '/sign_in'>already have an account?</a>
+  <a href = '/login'>already have an account?</a>
 </div>

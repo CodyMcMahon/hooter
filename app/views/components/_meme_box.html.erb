@@ -2,10 +2,10 @@
 <div class="panel-body">
     <p> some memes </p>
 </div>
-<div>
+<div >
     <% 10.times do %>
         <% offset = rand(Post.count) %>
         <% @m = Post.offset(offset).first%>
-        <p><%= @m.content  if @m%> </p>
+        <p class="wb" > <%= @m.content  if @m%> </p>
     <% end %>
 </div>

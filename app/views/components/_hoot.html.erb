@@ -2,20 +2,20 @@
 <div class="panel panel-default post-panel">
     <div class="panel-body">
         <div class="panel-body">
-            <div class = "col-xs-2" class = "avatar">  <h3> 
-                <img src="<%=User.find(@p.user_id).profile_image%>" height="40" width="40" />
+            <div class = "col-xs-2 avatar">  <h3> 
+                <img src="<%=User.find(@p.user_id).profile_image%>" height="70" width="70" />
             </div>
             
             <div class = "col-xs-10">   
                 <a href='/<%= User.find(@p.user_id).name %>' class = "post-username"> <%= User.find(@p.user_id).name %> </a><a href = '/single_hoot/<%= @p.id %>'><span class = 'post-time'><%= @p.created_at.to_formatted_s(:short) %></span></a>
                 <p></p>
             
-                <p class = "post-words"> <%= @p.content %> </p>
+                <p class = "post-words wb"> <%= @p.content %> </p>
                 <p></p>
             </div>
         </div>
         <p class = "post-buttons"> 
-            <a href = '/one_hoot/'><span class = "glyphicon glyphicon-pencil post-link" aria-hidden="true">reply</span></a>
+            <a href = '/single_hoot/<%=@p.id%>'><span class = "glyphicon glyphicon-pencil post-link" aria-hidden="true">reply(<%= @p.subhoots.count %>)</span></a>
             <%= render '/components/like_button' %>
             <%= render '/components/hate_button' %>
         </p>

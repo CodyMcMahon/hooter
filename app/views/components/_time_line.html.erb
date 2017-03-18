@@ -1,5 +1,7 @@
-<% for @p in @posts %>
-    <%= render '/components/hoot' %>
+<% if @posts %>
+    <% for @p in @posts %>
+        <%= render '/components/hoot' %>
+    <% end %>
 <% end %>
 <div class="panel panel-default post-panel">
     <div class="panel-body">

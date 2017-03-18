@@ -23,6 +23,9 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <%= render '/components/follow_button' %>
+                            <% if current_user.is_admin? %>
+                                <%= render '/components/ban_button' %>
+                            <% end %>
                         </div>
                     </div>
                 <% end %>

@@ -2,6 +2,16 @@
     <% @p = @hoot %>
     <div class = "col-xs-6 col-xs-offset-3">
         <%= render '/components/hoot' %>
+        <% @subhoots.each do |s| %>
+            <% next if !s %>
+            <div class="panel panel-default post-panel">
+                   <% p = User.find_by(id: s.user) %>
+                  <p class = 'list-owl' p><img src="<%= p.profile_image%>"  height="20" width="20" ><a href = /<%= p.name %> > <%= p.name %> </a> <%= s.content %></p>
+            </div>
+        <% end %>
+        <% if user_signed_in? %>
+            <%= render '/components/subhoot_form' %>
+        <% end %>
     </div>
 <% else %>
     <p> no hoot found </p>

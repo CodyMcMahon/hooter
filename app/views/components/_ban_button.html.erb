@@ -1,0 +1,4 @@
+<%= form_tag("ban", method: "delete", class: "") do %>
+    <%= text_field_tag(:user_to_ban, @this_user.id,:hidden => true, placeholder: "search by regex") %>
+    <%= submit_tag("BAN", :hidden => true, :class => "btn btn-danger") %>
+<% end %>

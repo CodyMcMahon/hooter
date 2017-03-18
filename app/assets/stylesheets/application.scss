@@ -38,6 +38,9 @@ body{
     margin-left: 15px;
     margin-right: 15px;
 }
+.wb {
+    word-wrap: break-word;
+}
 .post-buttons {
     text-align: left;
 }
@@ -76,5 +79,9 @@ body{
   color:red;
 }
 .avatar {
-    outline: 1px;
+    margin-top: -25px;
+    margin-left: -25px;
+}
+.subhoot_content {
+    margin-left: -80px;
 }

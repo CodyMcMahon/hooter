@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314084228) do
+ActiveRecord::Schema.define(version: 20170315002910) do
 
   create_table "hates", force: :cascade do |t|
     t.integer  "post_id"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 20170314084228) do
   add_index "relationships", ["followed_id", "follower_id"], name: "index_relationships_on_followed_id_and_follower_id", unique: true
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "subhoots", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subhoots", ["post_id", "created_at"], name: "index_subhoots_on_post_id_and_created_at"
+  add_index "subhoots", ["post_id"], name: "index_subhoots_on_post_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            default: "",                               null: false

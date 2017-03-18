@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :hates
   root 'pages#index'
 
+  delete 'user' => 'users#delete'
+  
+  delete 'ban'  => 'users#ban_user'
+  
   post 'login' => 'session#create'
 
   post 'logout' => 'session#destroy'
@@ -20,10 +24,16 @@ Rails.application.routes.draw do
   post 'change_avatar' => 'users#change_avatar'
   
   post 'like' => 'likes#create'
+  
+  post '/subhoot' => 'subhoots#create'
 
   get '/add_like_to/:to_id/:post_id' => 'likes#create'
   
   get '/add_hate_to/:to_id/:post_id' => 'hates#create'
+  
+  get '/search/:regex' => 'pages#search'
+  
+  get '/search' => 'pages#searchT'
 
   get '/edit_profile' => 'pages#edit_profile'
 

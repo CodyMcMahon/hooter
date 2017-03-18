@@ -1,0 +1,9 @@
+<div class="panel panel-default post-panel">
+   <div class="panel-body">
+      <%= form_tag("/subhoot", method: "post", class: "") do %>
+            <%= text_field_tag(:content, "",autocomplete: "off", placeholder: "🅱o🅱a 🅱ola", class: "form-control") %>
+            <%= text_field_tag(:post_id, @hoot.id, placeholder: "🅱o🅱a 🅱ola️️️️️️", :hidden => true) %>
+            <%= submit_tag("hoot @ this hoot", class: "btn btn-primary") %>
+      <% end %>
+    </div>
+</div>

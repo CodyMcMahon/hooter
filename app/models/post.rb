@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
   default_scope -> {order(created_at: :desc)}
   
-  has_many :likes
-  has_many :hates
+  has_many :subhoots, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :hates, dependent: :destroy
 end
