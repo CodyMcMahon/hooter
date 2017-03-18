@@ -13,10 +13,10 @@
     <p> <%= @this_user.posts.count %></p>
 </div>
 <div class = "col-xs-4">
-    <a href = '/following/<%= @username %>'><p>following</p></a>
+    <a href = '/following/<%= URI.encode(@username) %>'><p>following</p></a>
     <p> <%= @this_user.following.count %> </p>
 </div>
 <div class = "col-xs-4">
-    <a href = '/followers/<%= @username %>'><p>followers</p></a>
+    <a href = '/followers/<%= URI.encode(@username) %>'><p>followers</p></a>
     <p><%= @this_user.followers.count %> </p>
 </div>
