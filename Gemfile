@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 #check this first for porting
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 
 #printing stupid shit
 gem 'table_print'
@@ -17,7 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'taps'
 
 gem 'rails', '4.2.5'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
 
 #
 # Use SCSS for stylesheets
