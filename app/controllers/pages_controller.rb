@@ -12,18 +12,6 @@ class PagesController < ApplicationController
   end
   
   def search
-    @search = Regexp.new params[:regex]
-    @owls = Array.new
-    for @u in User.all
-      @owls.push(@u) if @u.name[@search]
-    end
-    @posts = Array.new
-    for @p in Post.all
-      @posts.push(@p) if @p.content[@search]
-    end
-  end
-  
-  def searchT
     if params[:search]
       @search = Regexp.new params[:search]
       @owls = Array.new

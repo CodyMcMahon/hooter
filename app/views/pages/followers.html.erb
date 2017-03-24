@@ -9,12 +9,12 @@
         <div class = "col-xs-6 col-xs-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p> followers of  <%=@username%></p>
+                    <p class = "title-text"> followers of  <%=@username%></p>
                 </div>
              </div>
-            <div class="panel panel-default">
-                <%= render '/components/list_of_owls' %>
+            <div id='followers-box' class="panel panel-default">
             </div>
+            <script>render_followers("<%=@username%>");</script>
         </div>
         <div class = "col-xs-3">
             <div class="panel panel-default">

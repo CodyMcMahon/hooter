@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 #check this first for porting
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+#gem 'pg'
 
 #printing stupid shit
 gem 'table_print'

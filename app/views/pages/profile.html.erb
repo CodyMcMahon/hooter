@@ -34,10 +34,20 @@
         <div class = "col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p> <%= @username %>'s hoots </p>
+                    <p class="title-text"> <%= @username %>'s hoots </p>
                 </div>
              </div>
-            <%= render '/components/time_line' %>
+             
+            <div id = timeline>
+                </div>
+                <script>
+                    render_hoots_for("<%= @username %>");
+                </script>
+                <div class="panel panel-default end-panel">
+                <div class="panel-body">
+                    <center> END </center>
+                </div>
+             </div>
        </div>
         <div class = "col-xs-3">
             <div class="panel panel-default">

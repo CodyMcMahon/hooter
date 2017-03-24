@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-    <a href="/add_like_to/<%=@p.user_id%>/<%=@p.id%>"/ ><span class = "glyphicon glyphicon-star post-link"   aria-hidden="true"></span></a><span><%= @p.likes.count %></span>
+    <span class = "glyphicon glyphicon-star post-link fun-buttons"  id='<%=@p.id%>-like' to_id='<%=@p.user_id%>' post_id='<%=@p.id%>' route='like' aria-hidden="true"></span>
+    <span id='<%=@p.id%>-like-count'><%= @p.likes.count %></span>
 <% else %>
     <span class = "glyphicon glyphicon-star post-link"   aria-hidden="true"></span><span><%= @p.likes.count %></span>
 <% end %>

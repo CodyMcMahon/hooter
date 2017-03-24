@@ -32,10 +32,10 @@
             <li><%= link_to('Log Out', logout_path, method: :post) %></li>
           </ul>
         </li>
-        <a href = '/one_hoot' ><li type = "button" class="btn btn-primary navbar-btn">Hoot</li></a>
+        <a href = '/home' ><li type = "button" class="btn btn-primary navbar-btn">Hoot</li></a>
       </ul>
       <%= form_tag("/search", method: "get", class: "navbar-form navbar-right") do %>
-        <%= text_field_tag(:search, "", placeholder: "search by regex") %>
+        <%= text_field_tag(:search, "", placeholder: "search by regex",class: 'form-control') %>
         <%= submit_tag("Search", :hidden => true) %>
       <% end %>
     </div><!-- /.navbar-collapse -->

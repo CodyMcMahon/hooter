@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-    <a href="/add_hate_to/<%=@p.user_id%>/<%=@p.id%>"/ ><span class = "glyphicon glyphicon-trash post-link"   aria-hidden="true"></span></a><span><%= @p.hates.count %></span>
+    <span class = "glyphicon glyphicon-trash post-link fun-buttons"  id='<%=@p.id%>-hate' to_id='<%=@p.user_id%>' post_id='<%=@p.id%>' route='hate' aria-hidden="true"></span>
+    <span id='<%=@p.id%>-hate-count'><%= @p.hates.count %></span>
 <% else %>
     <span class = "glyphicon glyphicon-trash post-link"  aria-hidden="true"></span><span><%= @p.hates.count %></span>
 <% end %>

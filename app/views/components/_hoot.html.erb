@@ -2,16 +2,18 @@
 <div class="panel panel-default post-panel">
     <div class="panel-body">
         <div class="panel-body">
-            <div class = "col-xs-2 avatar">  <h3> 
-                <img src="<%=User.find(@p.user_id).profile_image%>" height="70" width="70" />
+            <div class = "col-xs-2">  <h3> 
+                <img class= 'avatar hoot-avatar' src="<%=User.find(@p.user_id).profile_image%>" height="70" width="70" />
             </div>
             
-            <div class = "col-xs-10">   
-                <a href='/<%= User.find(@p.user_id).name %>' class = "post-username"> <%= User.find(@p.user_id).name %> </a><a href = '/single_hoot/<%= @p.id %>'><span class = 'post-time'><%= @p.created_at.to_formatted_s(:short) %></span></a>
-                <p></p>
+            <div class = "col-xs-10">  
+                <div class = "hoot-name-time-divider">
+                    <a href='/<%= User.find(@p.user_id).name %>' class = "post-username"> <%= User.find(@p.user_id).name %> </a><a href = '/single_hoot/<%= @p.id %>'><span class = 'post-time'><%= @p.created_at.to_formatted_s(:short) %></span></a>
+                </div>
             
-                <p class = "post-words wb"> <%= @p.content %> </p>
-                <p></p>
+                <div class = "hoot-content-divider">
+                    <p class = "post-words wb"> <%= @p.content %> </p>
+                </div>
             </div>
         </div>
         <p class = "post-buttons"> 
@@ -21,3 +23,5 @@
         </p>
     </div>
 </div>
+
+<!-- username,avatar,post_id,time,content,subhoot_count,like_count,hate_count -->

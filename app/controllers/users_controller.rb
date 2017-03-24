@@ -1,6 +1,7 @@
 #validates :name, presence: true, length: { maximum: 20 }
 #validates :password, presence: true, length: { minimum: 2 }
 class UsersController < ApplicationController
+    require 'user_data_class.rb'
     def new
         @user = User.new
     end
@@ -59,6 +60,23 @@ class UsersController < ApplicationController
             User.find(params[:user_to_ban]).destroy
         end
         redirect_to('/')
+    end
+    
+    def fellow_hooters
+        masterarr = Array.new
+        User.limit(7).order('RANDOM()').each do |u|
+            masterarr.push(User_data.new u.name, u.profile_image, u.id,'/'+URI.encode(u.name))
+        end
+        render json: masterarr
+    end
+    
+    def hooters_through_regex
+        @search = Regexp.new params[:search]
+        masterarr = Array.new
+        for u in User.all
+            masterarr.push(User_data.new u.name, u.profile_image, u.id,'/'+URI.encode(u.name)) if u.name[@search]
+        end
+        render json: masterarr
     end
     
     private

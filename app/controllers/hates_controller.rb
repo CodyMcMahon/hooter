@@ -10,10 +10,11 @@ class HatesController < ApplicationController
             @new_hate.to_id = params[:to_id]
             @new_hate.post_id = params[:post_id]
             @new_hate.save
-            redirect_to('/single_hoot/' + params[:post_id])
+            render plain: "success"
         else
-            redirect_to('/login')
+            render plain: "failure"
         end
+        #dont redirect for now
     end
     
    

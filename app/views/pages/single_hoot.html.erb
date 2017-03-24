@@ -2,6 +2,9 @@
     <% @p = @hoot %>
     <div class = "col-xs-6 col-xs-offset-3">
         <%= render '/components/hoot' %>
+        <script  type="text/javascript">
+            make_buttons_work();
+        </script>
         <% @subhoots.each do |s| %>
             <% next if !s %>
             <div class="panel panel-default post-panel">

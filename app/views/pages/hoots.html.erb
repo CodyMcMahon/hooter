@@ -2,10 +2,19 @@
     <div class = "col-xs-6 col-xs-offset-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <p> where da hoots @ </p>
+                <p class="title-text"> where da hoots @ </p>
             </div>
          </div>
-        <%= render '/components/time_line' %>
+        <div id = timeline>
+            </div>
+            <script>
+                render_hoot_hoots();
+            </script>
+            <div class="panel panel-default end-panel">
+            <div class="panel-body">
+                <center> END </center>
+            </div>
+         </div>
     </div>
     <div class = "col-xs-3">
        <div class="panel panel-default">

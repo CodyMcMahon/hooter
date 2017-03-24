@@ -14,74 +14,125 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$navbar_color: rgba(180,242,255,1);
+$background_color:  rgba(246,109,17,.1);
+$current_post_color: rgba(0,0,100,.2);
+
+$total: 20; //Number of .ray divs in our html
+$step: 360deg / $total; //Used to compute the hue based on color-wheel
+
+
+
+@for $i from 1 through $total {
+  .panel-color#{$i} {
+      
+    &:hover {
+    background: adjust-hue(blue, $i * $step);
+    }
+  }
+
+}
+
+
+%post-spacing{
+    margin-top: -20px;
+}
+%wb {
+    word-wrap: break-word;
+}
+%no-highlight{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .navbar{
-    background-color: rgba(180,242,255,255);
+    background-color: $navbar_color;
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+    }
 }
 
 body{
-    background-color: rgba(246,109,17,.1);
-}
-.navbar-brand {
-    position: absolute;
-    left: 50%;
+    background-color: $background_color;
 }
 .post-panel {
-    margin-top: -20px;
+    @extend %post-spacing;
+    .hoot-content-divider{
+        margin-top: -4px;
+        margin-left: -35px;
+    }
+    .hoot-name-time-divider{
+        margin-top: -18px;
+        margin-left: -25px;
+    }
+    .hoot-avatar{
+        margin-top: -30px;
+        margin-left: -25px;
+    }
+    .post-username {
+        text-align: left;
+        margin-left: -5px;
+        font-size: 150%;
+    }
+    .post-words {
+        text-align: left;
+        margin-left: 15px;
+        margin-right: 15px;
+        @extend %wb;
+    }
+    .post-buttons {
+        @extend %no-highlight;
+        text-align: left;
+        margin-top: -15px;
+        .fun-buttons{
+            margin-left: 15px;
+        }
+    }
+    .post-link {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .post-time {
+       
+    }
+    .hoot-title{
+        margin-left: -15px;
+        font-size: 150%;
+    }
+    .subhoot_content {
+        margin-left: -80px;
+    }
 }
-.post-username {
-    text-align: left;
-    margin-left: -5px;
-    font-size: 150%;
+.random-post{
+    @extend %wb;
 }
-.post-words {
-    text-align: left;
-    margin-left: 15px;
-    margin-right: 15px;
+.end-panel {
+    @extend %post-spacing;
 }
-.wb {
-    word-wrap: break-word;
-}
-.post-buttons {
-    text-align: left;
-}
-.post-link {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-.post-time {
-   
-}
-.hoot-title{
-    margin-left: -15px;
-    font-size: 150%;
-}
+
 .list-owl{
     margin-top: 5px;
     margin-left: 25px;
-}
-.inline {
-  display: inline;
-}
-
-.link-button {
-  background: none;
-  border: none;
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: serif;
-}
-.link-button:focus {
-  outline: none;
+    @extend %wb;
 }
 .link-button:active {
   color:red;
 }
 .avatar {
-    margin-top: -25px;
-    margin-left: -25px;
+    border: 1px solid black;
 }
-.subhoot_content {
-    margin-left: -80px;
+.title-text{
+    text-align: center;
+    font-size: 30px;
+}
+#timeline-list{
+    
+}
+.post-list-item{
+    
 }

@@ -32,7 +32,7 @@
         </li>
       </ul>
       <%= form_tag("/search", method: "get", class: "navbar-form navbar-right") do %>
-        <%= text_field_tag(:search, "", placeholder: "search by regex") %>
+        <%= text_field_tag(:search, "", placeholder: "search by regex",class: 'form-control') %>
         <%= submit_tag("Search", :hidden => true) %>
       <% end %>
     </div><!-- /.navbar-collapse -->

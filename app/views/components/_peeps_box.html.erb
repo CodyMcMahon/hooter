@@ -1,11 +1,7 @@
 <% @peeps = User.limit(7).order('RANDOM()') %>
-<div class="panel-body">
-    <p> fellow hooters </p>
+<div id='fellow-hooters-title' class="panel-body">
+    <p class = "title-text"> fellow hooters </p>
 </div>
-<% for @p in @peeps %>
-    <% if @p.name %>
-        <div>
-            <img src=<%=@p.profile_image%>  height="14" width="14" ><a href = /<%= @p.name.gsub(" ","%20") if @p%> > <%= @p.name  if @p%> </a>
-        </div>
-    <% end %>
-<% end %>
+<script>
+render_fellow_hooters();
+</script>

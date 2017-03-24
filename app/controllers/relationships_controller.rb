@@ -10,4 +10,20 @@ class RelationshipsController < ApplicationController
             current_user.unfollowed(user)
             redirect_to(:back)
         end
+        
+        def followings_for
+            masterarr = Array.new
+            User.find_by_name(params[:id]).following.each do |u|
+                masterarr.push(User_data.new u.name, u.profile_image, u.id,'/'+URI.encode(u.name)) if u
+            end
+            render json: masterarr
+        end
+          
+        def followers_for
+            masterarr = Array.new
+            User.find_by_name(params[:id]).followers.each do |u|
+                masterarr.push(User_data.new u.name, u.profile_image, u.id,'/'+URI.encode(u.name)) if u
+            end
+            render json: masterarr
+        end
 end

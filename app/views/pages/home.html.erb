@@ -20,7 +20,16 @@
                     <p> <%= render '/components/hoot_form' %></p>
                 </div>
              </div>
-            <%= render '/components/time_line' %>
+             <div id = timeline>
+            </div>
+            <script>
+                render_time_line();
+            </script>
+            <div class="panel panel-default end-panel">
+            <div class="panel-body">
+                <center> END </center>
+            </div>
+         </div>
         </div>
         <div class = "col-xs-3">
             <div class="panel panel-default">

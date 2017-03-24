@@ -10,10 +10,14 @@ class LikesController < ApplicationController
             @new_like.to_id = params[:to_id]
             @new_like.post_id = params[:post_id]
             @new_like.save
-            redirect_to('/single_hoot/' + params[:post_id])
+            #redirect_to('/single_hoot/' + params[:post_id])
+            render plain: "success"
         else
-            redirect_to('/login')
+            render plain: "failure"
+            #redirect_to('/login')
         end
+        
+        #works better with no redirect
     end
     
    
