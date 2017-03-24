@@ -73,6 +73,12 @@ class PostsController < ApplicationController
         render json: masterarr
     end
     
+    def single_json
+        masterarr = Array.new
+        masterarr.push(mk_hoot_data Post.find(params[:id]))
+        render json: masterarr
+    end
+    
     def hoots_through_regex
         masterarr = Array.new
         if params[:search]

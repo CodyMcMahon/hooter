@@ -1,4 +1,5 @@
 class SubhootsController < ApplicationController
+    require 'subhoot_data_class.rb'
     def new
         @subhoot = Subhoot.new
     end
@@ -11,5 +12,15 @@ class SubhootsController < ApplicationController
             @new_subhoot.save
         end
         redirect_to(:back)
+    end
+    
+    def get_subhoots
+        masterarr = Array.new
+        for sh in Subhoot.all.where("post_id = ?", params[:id])
+            next if sh == nil
+            u = User.find(sh.user_id)
+            masterarr.push(Subhoot_data.new u.name, u.profile_image, '/'+URI.encode(u.name), u.id, sh.content )
+        end
+        render json: masterarr
     end
 end

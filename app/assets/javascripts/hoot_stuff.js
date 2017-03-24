@@ -131,3 +131,8 @@ var render_hoots_through_regex = function(regex_string){
         draw_hoots(hoots);
     });
 };
+var render_single_hoot = function(id){
+    $.getJSON( "/single_json/"+id, function( hoots ) {
+        draw_hoots(hoots);
+    });
+};

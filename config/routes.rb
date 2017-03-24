@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   
   post '/subhoot' => 'subhoots#create'
   
+  post 'post' => 'posts#post'
+  
   #jsons
   get '/my_timeline' => 'posts#timeline'
   
@@ -52,6 +54,10 @@ Rails.application.routes.draw do
   
   get '/hooters_through_regex/:search' => 'users#hooters_through_regex'
   
+  get '/single_json/:id' => 'posts#single_json'
+  
+  get '/get_subhoots/:id' => 'subhoots#get_subhoots'
+  
   #pages
   get '/search' => 'pages#search'
 
@@ -71,15 +77,9 @@ Rails.application.routes.draw do
   
   get '/hoots' => 'pages#hoots'
   
-  get '/following' => 'pages#following_self'
-  
   get '/following/:id' => 'pages#following'
   
-  get '/followers' => 'pages#followers_self'
-  
   get '/followers/:id' => 'pages#followers'
-  
-  get '/kill_my_account' => 'pages#kill_my_account'
   
   get '/single_hoot' => 'pages#no_hoot'
   
