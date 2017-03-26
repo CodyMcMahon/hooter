@@ -1,3 +1,4 @@
+var TIMELINE_ASYNC_CHECKER = false;
 var make_buttons_work = function(){
     $('.fun-buttons').unbind().click(function(){
         var $t = $(this);
@@ -153,6 +154,12 @@ var draw_hoots = function(hoots){
     make_buttons_work();
 };
 var update_time_line = function(){
+    if(TIMELINE_ASYNC_CHECKER){
+        return;
+    }
+    else{
+        TIMELINE_ASYNC_CHECKER = true;
+    }
     var $tl = $('#timeline');
     var html_data = "";
     $.getJSON( "/my_timeline_update/"+$tl.attr('last_id'), function( hoots ) {
@@ -165,9 +172,11 @@ var update_time_line = function(){
             $tl.attr('last_id',hoots[0].post_id);
         }
         make_buttons_work();
+        TIMELINE_ASYNC_CHECKER = false;
     });
 }
 var render_time_line = function(){
+    TIMELINE_ASYNC_CHECKER = false;
     $.getJSON( "/my_timeline", function( hoots ) {
         draw_hoots(hoots);
     });

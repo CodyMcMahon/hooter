@@ -7,7 +7,14 @@
             </div>
         <% end %>
 */
+var SUBHOOT_TIMELINE_ASYNC_CHECKER = false;
 var update_subhoot_timeline = function(id){
+    if(SUBHOOT_TIMELINE_ASYNC_CHECKER){
+        return;
+    }
+    else{
+        SUBHOOT_TIMELINE_ASYNC_CHECKER = true;
+    }
     var $m = $("#subhoot-timeline-"+id)
     var html_data = "";
     $.getJSON( "/get_subhoots_update/"+id+'/'+$m.attr('last_id'), function( subhoot ) {
@@ -21,9 +28,12 @@ var update_subhoot_timeline = function(id){
         if(subhoot.length > 0){
             $m.attr('last_id',subhoot[subhoot.length-1].subhoot_id);
         }
+        SUBHOOT_TIMELINE_ASYNC_CHECKER = false;
     });
+    
 }
 var render_subhoot_timeline = function(id){
+    SUBHOOT_TIMELINE_ASYNC_CHECKER = false;
     var $m = $("#subhoot-timeline-"+id)
     var html_data = "";
     $.getJSON( "/get_subhoots/"+id, function( subhoot ) {

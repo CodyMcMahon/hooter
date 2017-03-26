@@ -15,7 +15,7 @@ test: &TEST
   password:
 
 production:
-  adapter: pg
+  adapter: ps
   encoding: unicode
   database: project_production
   pool: 5
