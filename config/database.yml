@@ -1,5 +1,5 @@
 development:
-  adapter: pg
+  adapter: sqlite3
   encoding: utf8
   database: project_development
   pool: 5
