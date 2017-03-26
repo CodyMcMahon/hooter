@@ -14,7 +14,8 @@ gem 'bcrypt'
 # navbar
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 gem 'taps'
 
 gem 'rails', '4.2.5'
