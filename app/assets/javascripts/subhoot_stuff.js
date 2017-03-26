@@ -58,7 +58,7 @@ var render_subhoot_timeline = function(id){
             update_subhoot_timeline(id);
             setTimeout(runForever2, 10000);
         }
-    })(), 5000);
+    }), 5000);
 };
 
 /*

@@ -187,7 +187,7 @@ var render_time_line = function(){
             update_time_line();
             setTimeout(runForever, 10000);
         }
-    })(), 5000);
+    }), 5000);
 };
 var update_explore = function(){
     var $tl = $('#timeline');

@@ -7,6 +7,7 @@ var enable_hoot_form = function(){
         $.post( "/hoot",  { 'content': $text.val()},function(data){
             if (data == "success"){
                 $text.val("");
+                //alert('test');
                 update_time_line();
             }
             else{
