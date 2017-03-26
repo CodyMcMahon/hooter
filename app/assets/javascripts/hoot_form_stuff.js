@@ -15,7 +15,7 @@ var enable_hoot_form = function(){
         });
     };
     $button.click(send_hoot);
-    $(document).unbind().keydown(function(key){
+    $(document).off('keydown').keydown(function(key){
         //alert(key);
         if(parseInt(key.which)===13 && $text.is(":focus")){//
             send_hoot();

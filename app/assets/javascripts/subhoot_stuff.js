@@ -120,7 +120,7 @@ var enable_subhoot_form = function(id){
         });
     };
     $button.click(send_subhoot);
-    $(document).unbind().keydown(function(key){
+    $(document).off('keydown').keydown(function(key){
         //alert(key);
         if(parseInt(key.which)===13 && $text.is(":focus")){//
             send_subhoot();
