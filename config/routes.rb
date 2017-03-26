@@ -31,12 +31,16 @@ Rails.application.routes.draw do
   
   post '/subhoot' => 'subhoots#create'
   
-  post 'post' => 'posts#post'
+  post '/hoot' => 'posts#hoot'
   
   #jsons
   get '/my_timeline' => 'posts#timeline'
   
+  get '/my_timeline_update/:id' => 'posts#timeline_update'
+  
   get '/all_hoots' => 'posts#explore'
+  
+  get '/all_hoots_update/:id' => 'posts#explore_update'
   
   get '/hoots_for/:id' => 'posts#hoots_for'
   
@@ -45,6 +49,8 @@ Rails.application.routes.draw do
   get '/fellow_hooters' => 'users#fellow_hooters'
   
   get '/hoot_hoots' => 'posts#hoot_hoots'
+  
+  get '/hoot_hoots_update/:id' => 'posts#hoot_hoots_update'
   
   get '/followings_for/:id' => 'relationships#followings_for'
   
@@ -57,6 +63,8 @@ Rails.application.routes.draw do
   get '/single_json/:id' => 'posts#single_json'
   
   get '/get_subhoots/:id' => 'subhoots#get_subhoots'
+  
+  get '/get_subhoots_update/:id/:from_id' => 'subhoots#get_subhoots_update'
   
   #pages
   get '/search' => 'pages#search'

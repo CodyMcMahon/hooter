@@ -1,9 +1,0 @@
-<% if @owls and @owls.any? %>
-    <% for @p in @owls %>
-        <div>
-            <p class = 'list-owl' p><img src="<%= @p.profile_image%>"  height="20" width="20" ><a href = /<%= URI.encode(@p.name) %> > <%= @p.name %> </a></p>
-        </div>
-    <%end%>
-<% else%>
-    <p class = 'list-owl'>  no one..... </p>
-<% end %>

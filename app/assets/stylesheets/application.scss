@@ -17,9 +17,11 @@
 $navbar_color: rgba(180,242,255,1);
 $background_color:  rgba(246,109,17,.1);
 $current_post_color: rgba(0,0,100,.2);
+$loop_color: rgba(0,0,255,.3);
 
-$total: 20; //Number of .ray divs in our html
-$step: 360deg / $total; //Used to compute the hue based on color-wheel
+
+$total: 25; 
+$step: 360deg / $total;
 
 
 
@@ -27,7 +29,7 @@ $step: 360deg / $total; //Used to compute the hue based on color-wheel
   .panel-color#{$i} {
       
     &:hover {
-    background: adjust-hue(blue, $i * $step);
+    background: adjust-hue($loop_color, $i * $step);
     }
   }
 
@@ -91,6 +93,16 @@ body{
         margin-top: -15px;
         .fun-buttons{
             margin-left: 15px;
+        }
+        .hate-button {
+            &:hover {
+                color:red;
+            }
+        }
+        .like-button {
+            &:hover {
+                color:green;
+            }
         }
     }
     .post-link {

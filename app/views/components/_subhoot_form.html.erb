@@ -1,9 +1,17 @@
 <div class="panel panel-default end-panel">
    <div class="panel-body">
-      <%= form_tag("/subhoot", method: "post", class: "") do %>
+      <!--<%= form_tag("/subhoot", method: "post", class: "") do %>
             <%= text_field_tag(:content, "",autocomplete: "off", placeholder: "🅱o🅱a 🅱ola", class: "form-control") %>
             <%= text_field_tag(:post_id, @hoot.id, placeholder: "🅱o🅱a 🅱ola️️️️️️", :hidden => true) %>
             <%= submit_tag("hoot @ this hoot", class: "btn btn-primary") %>
-      <% end %>
+      <% end %>-->
+      
+      
+      <input type="text" id="subhoot-content-box-<%=params[:id]%>" focus="on" autocomplete="off" value="" placeholder= "🅱o🅱a 🅱ola" class= 'form-control'>
+        <span style="float: right"><button id='subhoot-button-<%=params[:id]%>' class= "btn btn-primary">hoot @ this hoot</button></span>
+      </div>
+      <script>
+        enable_subhoot_form(<%=params[:id]%>);
+      </script>
     </div>
 </div>

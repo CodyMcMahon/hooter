@@ -6,15 +6,26 @@ class PostsController < ApplicationController
     end 
     
     def create
-        @post = Post.new(post_params)
-        @post.user_id = session[:user_id]
-        respond_to do |f|
-            if(@post.save)
-                f.html { redirect_to "", notice: ""}
+        #dont use
+    end
+    
+    def hoot
+        @post = Post.new
+        if user_signed_in?
+            if params[:content].length > 140
+                render plain: "you're hoot is too long"
             else
-                f.html { redirect_to "", notice: ""}
+                @post.content = params[:content]
+                @post.user_id = current_user_id
+                if(@post.save)
+                    render plain: "success"
+                else
+                    render plain: "you left it blank idiot"
+                end
             end
-        end    
+        else
+            render plain: 'sign in to hoot'
+        end
     end
     
     def timeline
@@ -36,9 +47,36 @@ class PostsController < ApplicationController
         render json: masterarr
     end
     
+    def timeline_update
+        masterarr = Array.new
+        if user_signed_in?
+            @this_user = current_user
+            @username = @this_user.name
+            @newPost = Post.new
+            arr = Array.new
+            for @a in @this_user.following
+                arr.push(@a.id)
+            end
+            arr.push(@this_user.id)
+            @posts = Post.where("id > ?", params[:id]).where("user_id IN (?)", arr)
+            @posts.each do |p|
+                masterarr.push (mk_hoot_data p) if p
+            end
+        end
+        render json: masterarr
+    end
+    
     def explore
         masterarr = Array.new
         Post.all.each do |p|
+            masterarr.push (mk_hoot_data p) if p
+        end
+        render json: masterarr
+    end
+    
+    def explore_update
+        masterarr = Array.new
+        Post.where("id > ?", params[:id]).each do |p|
             masterarr.push (mk_hoot_data p) if p
         end
         render json: masterarr
@@ -58,6 +96,14 @@ class PostsController < ApplicationController
     def hoot_hoots
         masterarr = Array.new
         Post.all.where(content: 'hoot').each do |p|
+            masterarr.push (mk_hoot_data p)
+        end
+        render json: masterarr
+    end
+    
+    def hoot_hoots_update
+        masterarr = Array.new
+        Post.where("id > ?", params[:id]).where(content: 'hoot').each do |p|
             masterarr.push (mk_hoot_data p)
         end
         render json: masterarr
@@ -91,9 +137,6 @@ class PostsController < ApplicationController
     end
     
     private
-    def post_params
-        params.require(:post).permit(:User_id, :content)
-    end
     def mk_hoot_data p
         u = User.find(p.user_id)
         h = Hoot_data.new(u.id, u.name, u.profile_image, p.id, p.created_at, p.content, p.subhoots.count,p.likes.count,p.hates.count)
