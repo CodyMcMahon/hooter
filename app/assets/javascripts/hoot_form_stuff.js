@@ -1,8 +1,10 @@
+/*global $*/
+/*global update_time_line*/
 var enable_hoot_form = function(){
     
     
-    $text = $('#hoot-content-box');
-    $button = $('#hoot-button');
+    var $text = $('#hoot-content-box');
+    var $button = $('#hoot-button');
     var send_hoot = function(){
         $.post( "/hoot",  { 'content': $text.val()},function(data){
             if (data == "success"){

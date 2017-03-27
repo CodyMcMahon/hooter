@@ -1,4 +1,5 @@
 //<p class="random-post" > <%= @m.content  if @m%> </p>
+/*global $*/
 var render_memes = function(){
     var $m = $('#list-of-memes');
     var html_data = "";

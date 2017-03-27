@@ -1,3 +1,4 @@
+/*global $*/
 var render_fellow_hooters = function(){
     var $m = $('#fellow-hooters-title');
     var html_data = "";

@@ -24,10 +24,7 @@ class PagesController < ApplicationController
   end
   
   def single_hoot
-    @new_like = Like.new
-    @new_hate = Hate.new
     @hoot = Post.find_by_id(params[:id])
-    @subhoots = Subhoot.all.where("post_id = ?", params[:id])
   end
   
   def no_hoot
@@ -47,7 +44,6 @@ class PagesController < ApplicationController
   end
 
   def home
-    @newPost = Post.new
     @this_user = current_user
     @username = current_user_name
   end

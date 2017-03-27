@@ -1,3 +1,4 @@
+/*global $*/
 var render_followers = function(name){
     var $m = $('#followers-box');
     var html_data = "";

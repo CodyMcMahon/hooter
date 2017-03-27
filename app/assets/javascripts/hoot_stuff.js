@@ -1,10 +1,11 @@
+/*global $*/
 var TIMELINE_ASYNC_CHECKER = false;
 var make_buttons_work = function(){
     $('.fun-buttons').unbind().click(function(){
         var $t = $(this);
         $.post( "/"+$(this).attr('route'),  { to_id: $(this).attr('to_id'), post_id: $(this).attr('post_id')},function(data){
             if (data == "success"){
-                $num = $('#'+$t.attr('id')+'-count');
+                var $num = $('#'+$t.attr('id')+'-count');
                 $num.text((Number($num.text())+1).toString());
             }
             else{
@@ -93,30 +94,34 @@ var parse_awful_time_format = function(t){
         return "several minutes ago";
     }
     else if(time_diff < 24*3600000){
-        return "like an hour or something ago";
+        return "like an hour ago";
     }
     else if(time_diff < 10*24*3600000){
-        return "over a day ago I stopped counting";
+        return "over a day idk";
     }
     else{
         return "yeah this is real old tbh";
     }
 }
 
+var make_input_safe = function(unsafe){
+    var safe = unsafe.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return safe;
+}
 
 var htmlify_hoot = function(hoot,i){
     var html_data = '<div class="panel panel-default post-panel panel-color'+(Math.floor(Math.random()*20)+1)+'">';
     html_data += '<div class="panel-body">';
     html_data += '<div class="panel-body">';
-    html_data += '<div class = "col-xs-2">  <h3> ';
+    html_data += '<div class = "col-xs-3 avatar-holder">  <h3> ';
     html_data += '<img class= "avatar hoot-avatar" src="'+ hoot.avatar +'" height="70" width="70" />';
     html_data += '</div>';
-    html_data += '<div class = "col-xs-10">  ';
+    html_data += '<div class = "col-xs-9">  ';
     html_data += '<div class = "hoot-name-time-divider">';
     html_data += '<a href="/'+ hoot.username +'" class = "post-username"> '+hoot.username+' </a><a href = "/single_hoot/'+hoot.post_id+'"><span class = "post-time">'+ parse_awful_time_format(hoot.time) +'</span></a>';
     html_data += '</div>';
     html_data += '<div class = "hoot-content-divider">';
-    html_data += '<p class = "post-words wb"> '+hoot.content+' </p>';
+    html_data += '<p class = "post-words wb" >'+make_input_safe(hoot.content)+'</p>';
     html_data += '</div>';
     html_data += '</div>';
     html_data += '</div>';
@@ -139,7 +144,7 @@ var draw_hoots = function(hoots){
         html_data += htmlify_hoot(hoots[i],i);
         //alert(html_data);
     }
-    $tl.html('<div id = timeline>'+html_data+'</div>');
+    $tl.html(html_data);
     if(hoots.length > 0){
         $tl.attr('last_id',hoots[0].post_id.toString());
     }
@@ -167,7 +172,7 @@ var update_time_line = function(){
         for(var i = 0; i < hoots.length;i++){
             html_data += htmlify_hoot(hoots[i],i);
         }
-        $tl.prepend('<div id = timeline>'+html_data+'</div>');
+        $tl.prepend(html_data);
         if(hoots.length > 0){
             $tl.attr('last_id',hoots[0].post_id);
         }
@@ -185,7 +190,7 @@ var render_time_line = function(){
         if ($('#timeline') && $('#timeline').attr('updating-from-home') === 'true'){
             //alert(Document.location.toString());
             update_time_line();
-            setTimeout(runForever, 10000);
+            setTimeout(runForever, 20000);
         }
     }), 5000);
 };
@@ -197,7 +202,7 @@ var update_explore = function(){
         for(var i = 0; i < hoots.length;i++){
             html_data += htmlify_hoot(hoots[i],i);
         }
-        $tl.prepend('<div id = timeline>'+html_data+'</div>');
+        $tl.prepend(html_data);
         if(hoots.length > 0){
             $tl.attr('last_id',hoots[0].post_id);
         }
@@ -213,9 +218,9 @@ var render_explore = function(){
         if ($('#timeline') && $('#timeline').attr('updating-from-explore') === 'true'){
             //alert(Document.location.toString());
             update_explore();
-            setTimeout(runForever, 5000);
+            setTimeout(runForever, 20000);
         }
-    })(), 5000);
+    }), 5000);
 };
 var update_hoot_hoots = function(){
     var $tl = $('#timeline');
@@ -225,7 +230,7 @@ var update_hoot_hoots = function(){
         for(var i = 0; i < hoots.length;i++){
             html_data += htmlify_hoot(hoots[i],i);
         }
-        $tl.prepend('<div id = timeline>'+html_data+'</div>');
+        $tl.prepend(html_data);
         if(hoots.length > 0){
             $tl.attr('last_id',hoots[0].post_id);
         }
@@ -241,9 +246,9 @@ var render_hoot_hoots = function(){
         if ($('#timeline') && $('#timeline').attr('updating-from-hoot-hoots') === 'true'){
             //alert(Document.location.toString());
             update_hoot_hoots();
-            setTimeout(runForever, 5000);
+            setTimeout(runForever, 20000);
         }
-    })(), 5000);
+    }), 5000);
 };
 var render_hoots_for = function(name){
     $.getJSON( "/hoots_for/"+name, function( hoots ) {
@@ -251,7 +256,7 @@ var render_hoots_for = function(name){
     });
 };
 var render_hoots_through_regex = function(regex_string){
-    $.getJSON( "/hoots_through_regex/"+regex_string, function( hoots ) {
+    $.getJSON( "/hoots_through_regex/"+encodeURI(regex_string), function( hoots ) {
         draw_hoots(hoots);
     });
 };

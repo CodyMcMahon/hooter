@@ -1,3 +1,4 @@
+/*global $*/
 /*subhoot stucture
         <% @subhoots.each do |s| %>
             <% next if !s %>
@@ -114,8 +115,8 @@ var render_time_line = function(){
 var enable_subhoot_form = function(id){
     
     
-    $text = $('#subhoot-content-box-'+id);
-    $button = $('#subhoot-button-'+id);
+    var $text = $('#subhoot-content-box-'+id);
+    var $button = $('#subhoot-button-'+id);
     var send_subhoot = function(){
         //alert("got this far?");
         $.post( "/subhoot",  { 'content': $text.val(),'post_id': ''+id},function(data){

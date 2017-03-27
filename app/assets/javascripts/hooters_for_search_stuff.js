@@ -1,3 +1,4 @@
+/*global $*/
 var render_hooters_through_regex = function(regex_string){
     var $m = $("#hooters-holding-object")
     var html_data = "";
