@@ -20,7 +20,7 @@ gem 'taps'
 gem 'rails', '4.2.5'
 gem 'rails_12factor'
 
-#gem 'puma'
+gem 'puma'
 
 #
 # Use SCSS for stylesheets
