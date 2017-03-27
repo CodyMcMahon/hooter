@@ -22,7 +22,7 @@ var update_subhoot_timeline = function(id){
         //alert($tl.attr('last_id'));
         for(var i = 0; i < subhoot.length;i++){
             html_data += '<div class="panel panel-default post-panel panel-color'+Math.floor(Math.random()*20+1)+'">';
-            html_data += '<p class = "list-owl" p><img src="'+subhoot[i].avatar+'"  height="20" width="20" ><a href = "'+subhoot[i].user_link+'" > '+subhoot[i].username+' </a> '+subhoot[i].content+'</p>';
+            html_data += '<p class = "list-owl" p><img class="avatar" src="'+subhoot[i].avatar+'"  height="20" width="20" ><a href = "'+subhoot[i].user_link+'" > '+subhoot[i].username+' </a> '+subhoot[i].content+'</p>';
             html_data += '</div>';
         }
         $m.append(html_data);
@@ -41,7 +41,7 @@ var render_subhoot_timeline = function(id){
         for(var i= 0;i < subhoot.length;i++){
             //<img src=<%=@p.profile_image%>  height="14" width="14" ><a href = /<%= @p.name.gsub(" ","%20") if @p%> > <%= @p.name  if @p%> </a>
             html_data += '<div class="panel panel-default post-panel panel-color'+Math.floor(Math.random()*20+1)+'">';
-            html_data += '<p class = "list-owl" p><img src="'+subhoot[i].avatar+'"  height="20" width="20" ><a href = "'+subhoot[i].user_link+'" > '+subhoot[i].username+' </a> '+subhoot[i].content+'</p>';
+            html_data += '<p class = "list-owl" p><img class="avatar" src="'+subhoot[i].avatar+'"  height="20" width="20" ><a href = "'+subhoot[i].user_link+'" > '+subhoot[i].username+' </a> '+subhoot[i].content+'</p>';
             html_data += '</div>';
         }
         $m.append(html_data);
