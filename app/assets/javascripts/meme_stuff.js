@@ -7,6 +7,6 @@ var render_memes = function(){
         for(var i= 0;i < hoots.length;i++){
             html_data += '<p class="random-post" > '+ hoots[i].meme +' </p>';
         }
-        $m.append(html_data);
+        $m.html(html_data);
     });
 };
