@@ -106,7 +106,7 @@ var parse_awful_time_format = function(t){
 
 //TODO change this back to &lt; and &gl; after caching is fixed
 var make_input_safe = function(unsafe){
-    var safe = unsafe.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    var safe = unsafe.replace(/</g,'ⲵ').replace(/>/g,'⳾');
     return safe;
 }
 
