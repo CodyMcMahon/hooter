@@ -139,6 +139,6 @@ class PostsController < ApplicationController
     private
     def mk_hoot_data p
         u = User.find(p.user_id)
-        h = Hoot_data.new(u.id, u.name, u.profile_image, p.id, p.created_at, p.content, p.subhoots.count,p.likes.count,p.hates.count)
+        h = Hoot_data.new(u.id, u.name, u.profile_image, p.id, p.created_at, p.content.gsub('<','&lt;').gsub('>','&gt;'), p.subhoots.count,p.likes.count,p.hates.count)
     end
 end
