@@ -15,7 +15,7 @@ class PostsController < ApplicationController
             if params[:content].length > 140
                 render plain: "you're hoot is too long"
             else
-                @post.content = params[:content].gsub('&lt;','ⲵ').gsub('&gt;','⳾').gsub('<','ⲵ').gsub('>','⳾')
+                @post.content = params[:content].gsub('<','&lt;').gsub('>','&gt;')
                 @post.user_id = current_user_id
                 if(@post.save)
                     render plain: "success"
