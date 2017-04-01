@@ -14,7 +14,11 @@
              </div>
             <div id='followers-box' class="panel panel-default">
             </div>
-            <script>render_followers("<%=@username%>");</script>
+            <script>
+            $(document).ready(function(){
+            render_followers("<%=@username%>");
+            });
+            </script>
         </div>
         <div class = "col-xs-3">
             <div class="panel panel-default">

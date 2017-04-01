@@ -11,7 +11,11 @@
                  </div>
                 <div id='following-box' class="panel panel-default">
                 </div>
-                <script>render_following("<%=@username%>");</script>
+                <script>
+            $(document).ready(function(){
+            render_following("<%=@username%>");
+            });
+            </script>
             </div>
             <div class = "col-xs-3">
                 <div class="panel panel-default">

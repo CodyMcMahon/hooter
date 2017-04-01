@@ -9,7 +9,7 @@ var make_buttons_work = function(){
                 $num.text((Number($num.text())+1).toString());
             }
             else{
-                alert("something went wrong!!!!");
+                alert("YOU ARE NOT LOGGED IN!!!!");
             }
         });
         var dec = Math.floor(Math.random()*4);
@@ -106,7 +106,7 @@ var parse_awful_time_format = function(t){
 
 //TODO change this back to &lt; and &gl; after caching is fixed
 var make_input_safe = function(unsafe){
-    var safe = unsafe.replace(/</g,'[').replace(/>/g,']');
+    var safe = unsafe.replace(/</g,'&lt;').replace(/>/g,'&gt;');
     return safe;
 }
 
