@@ -15,7 +15,7 @@ class PostsController < ApplicationController
             if params[:content].length > 140
                 render plain: "you're hoot is too long"
             else
-                @post.content = params[:content]
+                @post.content = params[:content].gsub('&lt;','ⲵ').gsub('&gt;','⳾').gsub('<','ⲵ').gsub('>','⳾')
                 @post.user_id = current_user_id
                 if(@post.save)
                     render plain: "success"
@@ -136,6 +136,7 @@ class PostsController < ApplicationController
         render json: masterarr
     end
     
+    #use weird symbols to stop strange XSS problem involved with caching that occurs on heroku
     private
     def mk_hoot_data p
         u = User.find(p.user_id)
